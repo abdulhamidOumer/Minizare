@@ -22,10 +22,10 @@ export const populateCountries = ()=>{
 
 export const getUserCountry = (countriesList)=>{
     return(dispatch)=>{
-        const path = 'http://ip-api.com/json'
+        const path = 'https://geoip-db.com/json/'
         getDataFromApi(path).then(res=>{
-            if(res.hasOwnProperty('country')){
-                const clientCountry = res.country.toLowerCase();
+            if(res.hasOwnProperty('country_name')){
+                const clientCountry = res.country_name.toLowerCase();
 
                 for(let key in countriesList){
                     const currentCountry = countriesList[key].name.toLowerCase()

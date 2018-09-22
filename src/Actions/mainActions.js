@@ -4,6 +4,8 @@ import store from '../Store'
 import {getExchangeRate, getHistoryData} from '../modules/CurrencyModule'
 import{getDataFromApi} from '../modules/dataSenderModule'
 import {getCurrencyTo} from './ConversionBoxActions'
+import {initiateAllStores, getCellObjectValue, addValueToCellObject} from '../modules/idbOperations'
+import {changeActiveTheme} from '../Actions/topBarActions'
 
 export const populateCountries = ()=>{
     return(dispatch)=>{
@@ -163,3 +165,19 @@ export const getCurrentChart = ()=>{
         })
         }
 }
+
+export const getPreferences = ()=>{
+    return(dispatch)=>{
+        initiateAllStores()
+
+        getCellObjectValue('theme','preferences').then(val=>{
+            dispatch(changeActiveTheme(val))
+            dispatch(populateCountries())
+        }).catch(err=>{
+            console.log(err)
+            const currentTheme = store.getState().theme
+            addValueToCellObject(currentTheme,'theme','preferences')
+            dispatch(populateCountries())
+        })
+    }
+} 

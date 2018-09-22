@@ -1,3 +1,4 @@
+import {addValueToCellObject} from '../modules/idbOperations'
 export const menuDisplayActions = (action)=>{
     return(dispatch)=>{
         
@@ -76,6 +77,7 @@ export const changeActiveTheme = (theme)=>{
         }
 
         dispatch({type:"CHANGE_THEME", payload:theme})
+        addValueToCellObject(theme,'theme','preferences')
     }
 }
 

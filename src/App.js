@@ -6,9 +6,8 @@ import ConversionBox from './Components/conversion-box'
 import Charts from './Components/Charts'
 import OptionsHolder from './Components/OptionsHolder'
 import PopUpHolder from './Components/PopUpHolder'
-import {populateCountries} from './Actions/mainActions'
 import FullScreenLoading from './Components/FullScreenLoading';
-import {changeActiveTheme} from './Actions/topBarActions'
+import {getPreferences} from './Actions/mainActions'
 import Menu from './Components/Menu'
 
 class App extends Component {
@@ -21,12 +20,10 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.props.dispatch(changeActiveTheme(this.props.theme));
+    this.props.dispatch(getPreferences());
   }
 
-  componentDidMount(){
-    this.props.dispatch(populateCountries());
-  }
+  
   componentDidUpdate(prevProps){
     if(this.props.PopUp !== prevProps.PopUp){
       switch(this.props.PopUp){

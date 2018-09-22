@@ -1,0 +1,19 @@
+@import url('../../Theme.css');
+
+.iconed-button{
+    border: none;
+    background: var(--color-accent);
+    text-align: center;
+    margin: 2%;
+    cursor: pointer;
+    outline: 0;
+}
+
+.button-icon{
+    font-size: 18pt;
+}
+
+.button-discription{
+    color: var(--primary-text-color);
+}
+

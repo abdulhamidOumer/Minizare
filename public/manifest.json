@@ -2,13 +2,23 @@
   "short_name": "Minizare",
   "name": "Minizare",
   "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
+      {"src": "logo.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
   ],
   "start_url": "./index.html",
+  "gcm_sender_id": "103953800507",
   "display": "standalone",
   "theme_color": "#42A5F5",
   "background_color": "#ffffff"

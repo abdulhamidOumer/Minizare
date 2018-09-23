@@ -4,16 +4,22 @@ import store from '../Store'
 import {getExchangeRate, getHistoryData} from '../modules/CurrencyModule'
 import{getDataFromApi} from '../modules/dataSenderModule'
 import {getCurrencyTo} from './ConversionBoxActions'
-import {initiateAllStores, getCellObjectValue, addValueToCellObject} from '../modules/idbOperations'
+import {initiateAllStores, getCellObjectValue, addValueToCellObject, addKeyValueObjects,getAllStoreValues} from '../modules/idbOperations'
 import {changeActiveTheme} from '../Actions/topBarActions'
 
-export const populateCountries = ()=>{
+
+const populateCountriesOnline = ()=>{
     return(dispatch)=>{
         const path = 'https://free.currencyconverterapi.com/api/v5/countries'
         getDataFromApi(path).then(res=>{
             if(res.hasOwnProperty('results')){
                 dispatch({type:"POPULATE_COUNTRIES",payload:res.results});
                 dispatch(getUserCountry(res.results));
+                addKeyValueObjects(res.results,'countries').then((res)=>{
+                    console.log(res)
+                }).catch(err=>{
+                    console.log(err);
+                })
             }
 
         }).catch(err=>{
@@ -22,36 +28,87 @@ export const populateCountries = ()=>{
     }
 }
 
-export const getUserCountry = (countriesList)=>{
+export const populateCountries = ()=>{
     return(dispatch)=>{
-        const path = 'https://geoip-db.com/json/'
+        getAllStoreValues('countries').then(res=>{
+            if(res && res.length > 0){
+                dispatch({type:"POPULATE_COUNTRIES",payload:res});
+                dispatch(getUserCountry(res));
+            }
+            else{
+                dispatch(populateCountriesOnline())
+            }
+        }).catch(err=>{
+            console.log(err)
+            dispatch(populateCountriesOnline())
+        })
+
+    }
+}
+
+const changeUserCountry = (countriesList,clientCountry)=>{
+    return(dispatch)=>{
+        for(let key in countriesList){
+            const currentCountry = countriesList[key].name.toLowerCase()
+            if(clientCountry === currentCountry){
+                let symbol = null
+
+                if(countriesList[key].hasOwnProperty('currencySymbol')){
+                    symbol = countriesList[key]['currencySymbol'];
+                }
+                 else{
+                     symbol = '$'
+                }
+
+                dispatch({type:"CHANGE_CURRENCY",payload:{name:countriesList[key].currencyName,id:countriesList[key].currencyId,symbol}}) 
+                
+                break;
+            }
+        }
+    }
+}
+
+const getUserCountryFromIp = ()=>{
+    const path = 'https://geoip-db.com/json/'
+    return new Promise((resolve, reject)=>{
         getDataFromApi(path).then(res=>{
             if(res.hasOwnProperty('country_name')){
                 const clientCountry = res.country_name.toLowerCase();
+                addValueToCellObject(clientCountry,'country','preferences')
+                resolve(clientCountry)
+            }
+            else{
+                reject("ERROR")
+            }
+        }).catch(err=>{
+            reject(err)
+        })
+    })
 
-                for(let key in countriesList){
-                    const currentCountry = countriesList[key].name.toLowerCase()
-                    if(clientCountry === currentCountry){
-                        let symbol = null
+}
 
-                        if(countriesList[key].hasOwnProperty('currencySymbol')){
-                            symbol = countriesList[key]['currencySymbol'];
-                        }
-                         else{
-                             symbol = '$'
-                        }
+export const getUserCountry = (countriesList)=>{
+    return(dispatch)=>{
 
-                        dispatch({type:"CHANGE_CURRENCY",payload:{name:countriesList[key].currencyName,id:countriesList[key].currencyId,symbol}}) 
-                        
-                        break;
-                    }
-                }
+        getCellObjectValue('country','preferences').then(res=>{
+            if(res){
+                dispatch(changeUserCountry(countriesList, res))
+            }
+            else{
+                getUserCountryFromIp().then(result=>{
+                    dispatch(changeUserCountry(countriesList, result))
+                })    
             }
             dispatch(populateCurrencyComponents(countriesList))
+            
         }).catch(err=>{
-            console.log(err)
+
+            getUserCountryFromIp().then(res=>{
+                dispatch(changeUserCountry(countriesList, res))
+            })
             dispatch(populateCurrencyComponents(countriesList))
         })
+
     }
 }
 

@@ -3,9 +3,6 @@
 .conversion-box{
     display: inline-block;
     width: 550px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 7px;
     max-width: 95%;
     margin-top: 100px;
     background: var(--color-accent);
@@ -20,7 +17,9 @@
     margin-left: auto;
     margin-right: auto;
     box-shadow: var(--main-shadow);
+    background: var(--input-background);
     height: 65px;
+    border-radius: 40px;
 }
 .currency-input{
     display: inline-block;
@@ -29,8 +28,10 @@
     border: none;
     width: 70%;
     height: inherit;
-    padding-left: 2%;
+    padding-left: 3%;
     background: var(--input-background);
+    border-radius: 40px;
+    
 }
 .convert-buttons-holder{
     text-align: initial;
@@ -41,39 +42,10 @@
     margin-right: auto;
 }
 
-.change-button{
-    display: inline-block; 
-    margin-bottom: 13px;
-    cursor: pointer;
-    font-size: 15pt;
-    box-shadow: var(--main-shadow);
-    border-radius: 7px;
-    padding: 2%;
-    width:45%;
-    font-weight: bold;
-    font-family: var(--title-font);
-    background: var(--color-accent);
-    color: var(--primary-color-one);
-    border: 3px solid var(--primary-color-one);
-}
-
-
-
-.change-up-button{
-   float: right;
-    
-}
-
-.arrow-icons{
-    font-size: 18pt;
-    padding-left: 2%;
-    float: right;
-}
-
 .change-curreny-button{
     display: inline-block;
     max-width: 10%;
-    margin-left: 6%;
+    margin-left: 4%;
     font-size: 18pt;
     border: none;
     color: var(--primary-color-one);
@@ -89,7 +61,8 @@
 
 .conversion-formula{
     color: var(--primary-text-color);
-    margin-top: 6%;
+    margin: 6%;
+
 }
 
 .currency-name{

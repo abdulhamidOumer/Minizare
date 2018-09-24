@@ -2,7 +2,9 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {ResponsiveContainer,AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 import {getCurrencyTo} from '../../Actions/ConversionBoxActions'
+import Loading from '../../Components/Loading'
 import './main.css'
+
 
 class Charts extends Component{
 
@@ -49,12 +51,11 @@ class Charts extends Component{
     }
     render(){
 
-        
+        let chart = (<Loading top='40%'/>)
+        let height = '400px'
 
-
-        return(
-            <div className ='chart-container'>
-                <h4 className='chart-title'>Past 7 Days Exchange History Chart</h4>
+        if(this.props.exchangeHistory){
+            chart = (
                 <ResponsiveContainer width="100%" height={300}>
                     <AreaChart data={this.state.exchangeHistory} store="var(--color-accent)" margin={{ top: 20, right: 35, left: 0, bottom: 0 }}>
                         <XAxis dataKey="Date"/>
@@ -66,7 +67,15 @@ class Charts extends Component{
             
                     </AreaChart>
                 </ResponsiveContainer>
+            )
 
+            height = 'inherit'
+        }
+
+        return(
+            <div className ='chart-container' style={{height:height}}>
+                <h4 className='chart-title'>Past 7 Days Exchange History Chart</h4>
+                    {chart}
                 </div>
         )
     }

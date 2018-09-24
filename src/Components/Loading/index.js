@@ -1,8 +1,8 @@
 import React from 'react'
 import './main.css'
 
-const Loading = ({marginTop})=>(
-    <div id='loadingCircle' style={{marginTop:marginTop}}>
+const Loading = ({marginTop,top})=>(
+    <div id='loadingCircle' style={{top:top,marginTop:marginTop}}>
 
     </div>
 )

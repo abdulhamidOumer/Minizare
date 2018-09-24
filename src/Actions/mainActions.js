@@ -173,10 +173,11 @@ export const getCurrentCurrenciesRate = ()=>{
         dispatch({type:"NULL_CURRENT_RATE"})
 
         getExchangeRate(from,to).then(res=>{
-            dispatch({type:"CHANGE_CURRENT_RATE",payload:{value:res.val, from, to}})
+            dispatch({type:"CHANGE_CURRENT_RATE",payload:{value:res, from, to}})
             if(store.getState().calculate){
                 dispatch({type:"INITIATE_CALCULATION",payload:{num:store.getState().calculate.num,ready:true,update:store.getState().calculate.update}});
             }
+            
             dispatch(getCurrentChart());
         }).catch(err=>{
             console.log(err);
@@ -199,7 +200,6 @@ export const getCurrentChart = ()=>{
         const secondCurrency = getCurrencyTo(store.getState().changeFrom,'id')
 
         const exchangeHistory = store.getState().exchangeHistory
-
         if(exchangeHistory){
             if(exchangeHistory.hasOwnProperty(`${firstCurrency}_${secondCurrency}`) || exchangeHistory.hasOwnProperty(`${secondCurrency}_${firstCurrency}`)){
                 const current = new Date();
@@ -217,6 +217,7 @@ export const getCurrentChart = ()=>{
 
         getHistoryData(firstCurrency, secondCurrency, fromDate, dateNow).then(res=>{
             dispatch({type:"SAVE_EXCHANGE_HISTORY",payload:{...res,updated:0,lastUpdated:new Date()}});
+
         }).catch(err=>{
             console.log(err);
         })
@@ -228,7 +229,13 @@ export const getPreferences = ()=>{
         initiateAllStores()
 
         getCellObjectValue('theme','preferences').then(val=>{
-            dispatch(changeActiveTheme(val))
+            if(val){
+                dispatch(changeActiveTheme(val))
+            }
+            else{
+                dispatch(changeActiveTheme('LIGHT'))
+            }
+            
             dispatch(populateCountries())
         }).catch(err=>{
             console.log(err)

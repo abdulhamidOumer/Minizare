@@ -8,4 +8,16 @@ body{
     width: 100%;
 }
 
+input{
+    outline: none;
+}
+
+textarea{
+    outline-color: var(--primary-color-one);
+}
+
+button{
+    outline: none;
+}
+
 

@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {menuDisplayActions,changeActiveTheme} from '../../Actions/topBarActions'
-import {faMoon,faSun} from '@fortawesome/fontawesome-free-solid'
-import {faFacebook,faTwitter,faGithub,faLinkedin, faFacebookMessenger,faPiedPiper} from '@fortawesome/fontawesome-free-brands'
+import {faMoon,faSun, faPaperPlane} from '@fortawesome/fontawesome-free-solid'
+import {faFacebook,faTwitter,faGithub,faLinkedin,faPiedPiper} from '@fortawesome/fontawesome-free-brands'
 import IconedButton from '../iconedButton'
 import './main.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -79,17 +79,17 @@ class Menu extends Component{
                 
                 <div className='center-container'>
                     <IconedButton onClick={this.changeTheme.bind(this,"LIGHT")} icon={faSun} discription='Light Mode' active={this.state.light}/>
-                    <IconedButton onClick={this.changeTheme.bind(this,"DARK")} icon={faMoon} discription='Night Mode'  active={this.state.dark}/>
+                    <IconedButton onClick={this.changeTheme.bind(this,"DARK")} icon={faMoon} discription='Dark Mode'  active={this.state.dark}/>
                     <IconedButton onClick={this.changeTheme.bind(this,"PIED")} icon={faPiedPiper} discription='Pied Piper'  active={this.state.pied}/>
                 </div>
 
                 <h3 className='title-discriptions'>Contact</h3>
                 
                 <div className='direct-message'>
-                    <textarea placeholder='Message' className='message-input'></textarea>
+                    <textarea placeholder='Direct Message' className='message-input'></textarea>
                     <button className='send-messenger-button'>
-                        <label>Send Via Messenger</label>
-                        <FontAwesomeIcon icon={faFacebookMessenger} className='messenger-icon'/>
+                        <label>Send To Developer</label>
+                        <FontAwesomeIcon icon={faPaperPlane} className='messenger-icon'/>
                     </button>
                 </div>
 

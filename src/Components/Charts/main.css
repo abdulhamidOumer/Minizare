@@ -2,14 +2,12 @@
 
 .chart-container{
     margin-top: 20px;
-    width: 95%;
-    margin-left: 2.5%;
+    width: 100%;
     background: var(--color-accent);
     color: var(--primary-color-two);
     margin-bottom: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
-    border-radius: 7px;
 }
 
 .chart-title{

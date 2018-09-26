@@ -11,7 +11,8 @@ export default (state={
     currencyListComponents:null,
     exchangeHistory:null,
     topMenu:false,
-    theme:'LIGHT'
+    theme:'LIGHT',
+    toaster:null
 },action)=>{
     switch(action.type){
         case "SHOW_POP_UP_UPPER":{
@@ -76,6 +77,18 @@ export default (state={
         }
         case "SAVE_EXCHANGE_HISTORY":{
             return {...state, exchangeHistory:action.payload}
+        }
+
+        case "SHOW_TOASTER":{
+            return {...state, toaster:action.payload}
+        }
+
+        case "CLOSE_TOASTER":{
+            return {...state, toaster:null}
+        }
+
+        case "NULL_HISTORY":{
+            return{...state, exchangeHistory:null}
         }
         default:
             break;

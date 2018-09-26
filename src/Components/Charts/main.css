@@ -4,12 +4,65 @@
     margin-top: 20px;
     width: 100%;
     background: var(--color-accent);
-    color: var(--primary-color-two);
+    color: var(--text-dark);
     margin-bottom: 5%;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 1%;
+    
 }
 
+.the-chart{
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    padding-bottom: 2.5%;
+}
 .chart-title{
     color: var(--primary-color-one);
+}
+
+.from-to-div{
+    width: 100%;
+    margin-top: 2.5%;
+    padding-bottom: 5%;
+}
+
+.date-input{
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    background: var(--input-background);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    width: 35%;
+    box-shadow: var(--main-shadow);
+    color: var(--primary-text-color);
+    text-align: center;
+    align-content: center;
+    font-size: 12pt;
+    border-radius: 40px;
+}
+.date-input-separator{
+    color: var(--primary-text-color);
+    margin-top: 5%;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.show-history-button{
+    margin-top: 3%;
+    padding: 20px;
+    background: var(--primary-color-one);
+    border: 3.5px solid var(--primary-color-one);
+    box-shadow: var(--main-shadow);
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 13pt;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.button-icon{
+    vertical-align: middle;
 }

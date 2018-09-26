@@ -49,7 +49,10 @@ export const getDataFromApi = (path,method='GET')=>{
 
                 }
                 else{
-                    reject({errorType:'STATUS_CODE',error:apiResponse.status})    
+                    apiResponse.json().then(jsonResponse=>{
+
+                        reject(jsonResponse);
+                    })    
                 }
 
             }).catch(error=>{

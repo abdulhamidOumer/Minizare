@@ -38,7 +38,7 @@ const themes = {
         inactive_color:"#c0c0c0",
         border_color:"#666565",
         input_background:"#616161",
-        text_dark:"#EEEEEE",
+        text_dark:"#bebebe",
         title_color:"#ffffff",
         color_accent:"#424242",
         main_background:"#616161"
@@ -50,7 +50,7 @@ const themes = {
         inactive_color:"#c0c0c0",
         border_color:"#666565",
         input_background:"#616161",
-        text_dark:"#EEEEEE",
+        text_dark:"#bebebe",
         title_color:"#ffffff",
         color_accent:"#424242",
         main_background:"#616161"

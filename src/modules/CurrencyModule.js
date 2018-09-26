@@ -97,8 +97,8 @@ export const getHistoryData = (firstCurrrency, secondCurrency, fromDate, toDate)
             getHistoryFromStore(exchange_2).then(res=>{
                 if(res.date === date){
                     const result = {}
-                    result[exchange_1]=res.historyData
-                    result[exchange_2]=result_1
+                    result[exchange_1]=result_1
+                    result[exchange_2]=res.historyData
                     resolve(result)
                     console.log("Served From Offline store")
                 }

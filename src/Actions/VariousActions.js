@@ -13,3 +13,15 @@ export const showFullLoader = ()=>{
         dispatch({type:"SHOW_FULL_SCREEN_LOADER"});
     }
 }
+
+export const showToaster = (toasterItems)=>{
+    return(dispatch)=>{
+        dispatch({type:"SHOW_TOASTER",payload:toasterItems})
+    }
+}
+
+export const closeToaster = ()=>{
+    return(dispatch)=>{
+        dispatch({type:"CLOSE_TOASTER"});
+    }
+}

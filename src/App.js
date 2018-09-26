@@ -8,14 +8,17 @@ import OptionsHolder from './Components/OptionsHolder'
 import PopUpHolder from './Components/PopUpHolder'
 import FullScreenLoading from './Components/FullScreenLoading';
 import {getPreferences} from './Actions/mainActions'
+import {closeToaster} from './Actions/VariousActions'
 import Menu from './Components/Menu'
+import Toaster from './Components/Toaster'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       PopUp:null,
-      menu:null
+      menu:null,
+      toaster:null
     }
   }
 
@@ -56,7 +59,32 @@ class App extends Component {
 
     }
 
+    if(this.props.toaster !== prevProps.toaster){
+      if(this.props.toaster){
+        const toaster = this.props.toaster
+        const toasterToShow = (
+          <Toaster 
+            message={toaster.message} 
+            background={toaster.background} 
+            itemsBackground={toaster.itemsBackground} 
+            iconRight={toaster.iconRight} 
+            iconLeft={toaster.iconLeft} 
+            iconAction={this.closeToasterView.bind(this)}
+          />)
+
+        this.setState({toaster:toasterToShow});
+
+      }
+      else{
+        this.setState({toaster:null});
+      }
+    }
+
     
+  }
+
+  closeToasterView(){
+    this.props.dispatch(closeToaster());
   }
 
   render() {
@@ -72,6 +100,7 @@ class App extends Component {
         {this.state.menu}
         <ConversionBox />
         <Charts />
+        {this.state.toaster}
       </div>
     );
   }
@@ -82,7 +111,8 @@ App = connect(store=>{
     PopUp:store.PopUp,
     full_screen_loading:store.full_screen_loading,
     topMenu:store.topMenu,
-    theme:store.theme
+    theme:store.theme,
+    toaster:store.toaster
   }
 })(App)
 

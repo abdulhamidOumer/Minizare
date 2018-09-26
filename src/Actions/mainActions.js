@@ -6,8 +6,7 @@ import{getDataFromApi} from '../modules/dataSenderModule'
 import {getCurrencyTo} from './ConversionBoxActions'
 import {initiateAllStores, getCellObjectValue, addValueToCellObject, addKeyValueObjects,getAllStoreValues} from '../modules/idbOperations'
 import {changeActiveTheme} from '../Actions/topBarActions'
-
-
+import {faExclamationTriangle, faTimes} from '@fortawesome/fontawesome-free-solid'
 const populateCountriesOnline = ()=>{
     return(dispatch)=>{
         const path = 'https://free.currencyconverterapi.com/api/v5/countries'
@@ -178,7 +177,6 @@ export const getCurrentCurrenciesRate = ()=>{
                 dispatch({type:"INITIATE_CALCULATION",payload:{num:store.getState().calculate.num,ready:true,update:store.getState().calculate.update}});
             }
             
-            dispatch(getCurrentChart());
         }).catch(err=>{
             console.log(err);
         })
@@ -187,42 +185,51 @@ export const getCurrentCurrenciesRate = ()=>{
     }
 }
 
-export const getCurrentChart = ()=>{
-    return(dispatch)=>{
-        const today = new Date()
-        const dd = today.getDate()-1;
-        const mm = today.getMonth()+1;
-        const yyyy = today.getFullYear();
 
-        const dateNow = `${yyyy}-${mm}-${dd}`;
-        const fromDate = `${yyyy}-${mm}-${dd-7}`
+export const getCurrentChart = (fromDate, toDate)=>{
+    
+    return(dispatch)=>{
         const firstCurrency = store.getState().changeFrom.id
         const secondCurrency = getCurrencyTo(store.getState().changeFrom,'id')
-
         const exchangeHistory = store.getState().exchangeHistory
         if(exchangeHistory){
             if(exchangeHistory.hasOwnProperty(`${firstCurrency}_${secondCurrency}`) || exchangeHistory.hasOwnProperty(`${secondCurrency}_${firstCurrency}`)){
-                const current = new Date();
-                const oldTime = exchangeHistory.lastUpdated
-
-                const difference = Math.abs(current - oldTime)/36e5
-                if(difference < 1){
+                const dates = []
+                let count = 0
+                for(let key in exchangeHistory[`${firstCurrency}_${secondCurrency}`]){
+                    if(count === 0)
+                        dates[0] = key
+                    else
+                        dates[1] = key
+                    count++
+                }
+                if(fromDate === dates[0] && toDate === dates[1]){
                     dispatch({type:"SAVE_EXCHANGE_HISTORY",payload:{...exchangeHistory,updated:exchangeHistory.updated+1}});
                     return
                 }
-                
             }
         }
         
-
-        getHistoryData(firstCurrency, secondCurrency, fromDate, dateNow).then(res=>{
+        dispatch({type:"NULL_HISTORY"})
+        getHistoryData(firstCurrency, secondCurrency, fromDate, toDate).then(res=>{
             dispatch({type:"SAVE_EXCHANGE_HISTORY",payload:{...res,updated:0,lastUpdated:new Date()}});
 
         }).catch(err=>{
-            console.log(err);
+            if(err.error === 'Free version only allows up to 1 year earlier.'){
+                const message = "History is only avialable for 1 year earlier currently"
+                const background = "var(--error-color)"
+                const itemsBackground = "white"
+                const iconRight = faTimes
+                const iconLeft = faExclamationTriangle
+
+                dispatch({type:"SHOW_TOASTER",payload:{message, background, itemsBackground, iconRight, iconLeft}});
+            }
         })
-        }
+        
+
+    }
 }
+
 
 export const getPreferences = ()=>{
     return(dispatch)=>{

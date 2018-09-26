@@ -1,0 +1,44 @@
+@import url('../../Theme.css');
+
+.toaster{
+    bottom: 0%;
+    position: fixed;
+    background: var(--color-accent);
+    width: 100%;
+    box-shadow: var(--main-shadow);
+    z-index: 1;
+    animation: animateBottom 0.7s;
+    overflow: auto;
+    text-align: initial;
+}
+
+@keyframes animateBottom {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0%; opacity: 1}
+}
+
+.toaster-items{
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.toaster-right-icon{
+    margin-right: 3%;
+    float: right;
+    cursor: pointer;
+    color: var(--primary-text-color);
+}
+
+.toaster-left-icon{
+    margin-left: 3%;
+    float: left;
+    color: var(--primary-color-one);
+
+}
+
+.toaster-message{
+    color: var(--text-dark);
+    width: 80%;
+    margin-left: 4%;
+}
+

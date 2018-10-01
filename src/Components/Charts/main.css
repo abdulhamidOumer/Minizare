@@ -5,10 +5,9 @@
     width: 100%;
     background: var(--color-accent);
     color: var(--text-dark);
-    margin-bottom: 5%;
+    margin-bottom: 3%;
     padding-top: 2%;
     padding-bottom: 1%;
-    
 }
 
 .the-chart{

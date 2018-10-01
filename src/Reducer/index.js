@@ -23,6 +23,10 @@ export default (state={
             return {...state,PopUp:action.payload, editNow:"LOWER", full_screen_loading:false}
         }
 
+        case "SHOW_POP_UP":{
+            return {...state, PopUp:action.payload}
+        }
+
         case "CLOSE_POP_UP":{
             return {...state, PopUp:null}
         }

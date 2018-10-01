@@ -61,16 +61,44 @@ class Menu extends Component{
         console.log("HERE")
         this.props.dispatch(changeActiveTheme(theme))
     }
-      
-      setWrapperRef(node) {
-        this.wrapperRef = node;
-      }
-    
-      handleClickOutside(event) {
-        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-            this.props.dispatch(menuDisplayActions('HIDE'));
+    openSocial(network){
+        let url = null
+        switch(network){
+            case "facebook":{
+                url = 'https://www.facebook.com/abdulhamidoumer.oumer'
+                break
+            }
+
+            case "twitter":{
+                url = 'https://twitter.com/Aotwitts3'
+                break
+            }
+
+            case "github":{
+                url = 'https://github.com/abdulhamidOumer'
+                break
+            }
+
+            case "linkedin":{
+                url = 'https://www.linkedin.com/in/abdulhamid-mohammed-3a9485108/'
+                break
+            }
+            default:
+                break
         }
+
+        const openUrl = window.open(url, '_blank')
+        openUrl.focus()
+    }
+    setWrapperRef(node) {
+      this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+      if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+          this.props.dispatch(menuDisplayActions('HIDE'));
       }
+    }
 
     render(){
         return(
@@ -94,10 +122,10 @@ class Menu extends Component{
                 </div>
 
                 <div className='center-container'>
-                    <IconedButton icon={faFacebook} discription='Facebook' active/>
-                    <IconedButton icon={faTwitter} discription='Twitter' active/>
-                    <IconedButton icon={faGithub} discription='GitHub' active/>
-                    <IconedButton icon={faLinkedin} discription='LinkedIn' active/>
+                    <IconedButton onClick={this.openSocial.bind(this,'facebook')} icon={faFacebook} active/>
+                    <IconedButton onClick={this.openSocial.bind(this,'twitter')} icon={faTwitter} active/>
+                    <IconedButton onClick={this.openSocial.bind(this,'github')} icon={faGithub}  active/>
+                    <IconedButton onClick={this.openSocial.bind(this,'linkedin')} icon={faLinkedin} active/>
                 </div>
 
             </div>

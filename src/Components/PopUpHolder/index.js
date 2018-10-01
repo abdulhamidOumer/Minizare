@@ -5,7 +5,10 @@ import {closePopUp} from '../../Actions/VariousActions'
 
 class PopUp extends Component{
     closeModal = ()=>{
-        this.props.dispatch(closePopUp());
+        if(this.props.PopUp==='CURRENCY_OPTIONS')
+            this.props.dispatch(closePopUp('currency'));
+        else
+            this.props.dispatch(closePopUp())
     }
 
     render(){
@@ -20,7 +23,11 @@ class PopUp extends Component{
     }
 }
 
-PopUp = connect()(PopUp)
+PopUp = connect(store=>{
+    return{
+        PopUp:store.PopUp
+    }
+})(PopUp)
 
 
 export default PopUp

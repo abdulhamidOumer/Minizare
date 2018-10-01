@@ -4,13 +4,13 @@
     border: none;
     background: var(--color-accent);
     text-align: center;
-    margin: 2%;
     cursor: pointer;
     outline: 0;
 }
 
 .button-icon{
     font-size: 18pt;
+    vertical-align: middle;
 }
 
 .button-discription{

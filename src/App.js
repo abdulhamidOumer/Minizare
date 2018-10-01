@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import './App.css'
+import {showPopUp} from './Actions/VariousActions'
 import TopBar from './Components/TopBar'
 import ConversionBox from './Components/conversion-box'
 import Charts from './Components/Charts'
@@ -11,6 +12,8 @@ import {getPreferences} from './Actions/mainActions'
 import {closeToaster} from './Actions/VariousActions'
 import Menu from './Components/Menu'
 import Toaster from './Components/Toaster'
+import FloatingButton from './Components/FloatingButton'
+import InfoBox from './Components/InfoBox'
 
 class App extends Component {
   constructor(props){
@@ -33,6 +36,11 @@ class App extends Component {
 
         case "CURRENCY_OPTIONS":{
           this.setState({PopUp:(<PopUpHolder element={<OptionsHolder />}/>)})
+          break;
+        }
+
+        case "INFO_BOX":{
+          this.setState({PopUp:(<PopUpHolder element={<InfoBox />}/>)})
           break;
         }
 
@@ -101,6 +109,7 @@ class App extends Component {
         <ConversionBox />
         <Charts />
         {this.state.toaster}
+        <FloatingButton text="Info" onClick={()=>{this.props.dispatch(showPopUp('INFO_BOX'))}}/>
       </div>
     );
   }

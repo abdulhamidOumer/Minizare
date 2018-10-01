@@ -1,10 +1,11 @@
 import {populateCurrencyComponents} from './mainActions'
 import Store from '../Store'
 
-export const closePopUp = ()=>{
+export const closePopUp = (type=null)=>{
     return(dispatch)=>{
         dispatch({type:"CLOSE_POP_UP"});
-        dispatch(populateCurrencyComponents(Store.getState().countries))
+        if(type==='currency')
+            dispatch(populateCurrencyComponents(Store.getState().countries))
     }
 }
 
@@ -23,5 +24,11 @@ export const showToaster = (toasterItems)=>{
 export const closeToaster = ()=>{
     return(dispatch)=>{
         dispatch({type:"CLOSE_TOASTER"});
+    }
+}
+
+export const showPopUp = (name)=>{
+    return(dispatch)=>{
+        dispatch({type:"SHOW_POP_UP",payload:name})
     }
 }

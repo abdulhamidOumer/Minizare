@@ -1,5 +1,6 @@
 import Store from '../Store'
 import {populateCurrencyComponents} from './mainActions'
+
 export const showCurrencyOptions = (fromInput)=>{
     return(dispatch)=>{
         dispatch({type:fromInput,payload:"CURRENCY_OPTIONS"})

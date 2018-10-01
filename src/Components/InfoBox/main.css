@@ -1,0 +1,151 @@
+.info-box{
+    background: var(--color-accent);
+    width: 95%;
+    height: 80%;
+    position: absolute;
+    margin-left: 2.5%;
+    margin-top: 50pt;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabs-container{
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: initial;
+    box-shadow: var(--main-shadow);
+}
+
+.a-tab-container{
+    display: inline-block;
+    width: 24%;
+    text-align: center;
+}
+
+.info-tab{
+    width: 50px;
+    position: relative;
+    background: var(--color-accent);
+    border: none;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color-one);
+}
+
+.tab-icon{
+    vertical-align: middle;
+    font-size: 20pt;
+}
+
+.separator{
+    
+    width: 10%;
+    display: inline-block;
+}
+
+.info-box-content{
+    position: relative;
+    margin: 1%;
+    margin-top: 2%;
+    height: calc(95% - 82px);
+    border-radius: 10px;
+    overflow: auto;
+    overflow: auto;
+    text-align: initial;
+    border: solid 1px var(--border-color);
+}
+
+.tab-title{
+    color: var(--text-dark);
+    margin-left: 3%;
+    font-family: var(--title-font);
+}
+
+.tab-paragraph{
+    color: var(--primary-text-color);
+    margin-top: 1%;
+    margin-left: 3%;
+    font-family: var(--title-font);
+    font-size: 12pt;
+}
+
+.tab-paragraph img{
+    width: 12pt;
+    height: 12pt;
+}
+
+.tab-paragraph a{
+    text-decoration: none;
+    color: var(--primary-color-one);
+}
+
+.tab-paragraph a::after{
+    color: var(--primary-color-one);
+}
+
+.middle{
+    margin-top: 5%;
+}
+
+.tab-lists{
+    color: var(--primary-text-color);
+    margin-left: 3%;
+    font-family: var(--title-font);
+    font-size: 12pt;
+}
+.tab-lists li{
+    margin-top: 1%;
+}
+
+
+.center-contents-div{
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.icon-wraper{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border: solid 3px var(--primary-color-one);
+    border-radius: 50%;
+}
+
+
+.reading-icons{
+    color: var(--primary-color-one);
+    vertical-align: middle;
+    font-size: 36pt;
+}
+
+.sub{
+    margin-top: 0%;
+    margin-bottom: 1%;
+}
+
+.tab-logo{
+    width: 100px;
+    height: 100px;
+    border: solid 3px var(--primary-color-one);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.footer-paragraph{
+    position: absolute;
+    bottom: 0%;
+}
+
+.powered{
+    margin-left: 40%;
+}

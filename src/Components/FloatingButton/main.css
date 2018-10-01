@@ -1,0 +1,28 @@
+.floating-button{
+    bottom: 30px;
+    right: 20px;
+    position: fixed;
+    width: 120px;
+    background: var(--primary-color-one);    
+    padding-top: 10px;
+    box-shadow: var(--main-shadow);
+    padding-bottom: 10px;
+    border-radius: 40px;
+    padding-right: 10px;
+    cursor: pointer;
+    text-align: center;
+    color: #ffffff;
+}
+
+.floating-icon{
+    font-size: 30pt;
+    vertical-align: middle;
+}
+
+.floating-name{
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: var(--title-font);
+    font-size: 14pt;
+    vertical-align: middle;
+}

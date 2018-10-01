@@ -8,7 +8,7 @@ import { faDesktop } from '@fortawesome/fontawesome-free-solid';
 const HowToInstall = ()=>{
     return(
         <div>
-            <h3 className='tab-title'>How To Install Minizare</h3>
+            <h3 className='tab-title'>How To Install Minizare </h3>
             <p className='tab-paragraph'>Minizare is a progressive web app (PWA), which means you are
             able to install it to your device regardless of the platform you are using(Android, ios or Desktop).
             Follow the steps below to install Minizare to your device.</p>

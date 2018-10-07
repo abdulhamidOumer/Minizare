@@ -69,6 +69,10 @@
     font-family: var(--title-font);
 }
 
+.middle-title{
+    margin-left: 0%;
+}
+
 .tab-paragraph{
     color: var(--primary-text-color);
     margin-top: 1%;
@@ -102,7 +106,7 @@
     font-size: 12pt;
 }
 .tab-lists li{
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 
@@ -141,6 +145,21 @@
     border-radius: 20px;
 }
 
+.tab-logo-icon{
+    width: 100px;
+    height: 100px;
+    border: solid 3px var(--primary-color-one);
+    padding: 10px;
+    border-radius: 50%;
+    line-height: 100px;
+    display: inline-block;
+}
+
+.tab-logo-icon .reading-icons{
+    color: var(--primary-color-one);
+    vertical-align: middle;
+    font-size: 56pt;
+}
 .footer-paragraph{
     position: absolute;
     bottom: 0%;

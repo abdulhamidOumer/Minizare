@@ -12,7 +12,9 @@ export default (state={
     exchangeHistory:null,
     topMenu:false,
     theme:'LIGHT',
-    toaster:null
+    toaster:null,
+    infoPopUpState:null,
+    devMessage:null
 },action)=>{
     switch(action.type){
         case "SHOW_POP_UP_UPPER":{
@@ -93,6 +95,14 @@ export default (state={
 
         case "NULL_HISTORY":{
             return{...state, exchangeHistory:null}
+        }
+
+        case "UPDATE_INFO_POP_UP":{
+            return{...state, infoPopUpState:action.payload}
+        }
+
+        case "SAVE_DEV_MESSAGE":{
+            return{...state, devMessage:action.payload}
         }
         default:
             break;

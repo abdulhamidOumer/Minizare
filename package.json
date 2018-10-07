@@ -2,6 +2,7 @@
   "name": "react-currency-converter",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:9000",
   "homepage": "http://abdulhamidoumer.github.io/Minizare",
   "dependencies": {
     "@fortawesome/fontawesome-free-brands": "^5.0.13",

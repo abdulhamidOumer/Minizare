@@ -9,11 +9,12 @@ import OptionsHolder from './Components/OptionsHolder'
 import PopUpHolder from './Components/PopUpHolder'
 import FullScreenLoading from './Components/FullScreenLoading';
 import {getPreferences} from './Actions/mainActions'
-import {closeToaster} from './Actions/VariousActions'
+import {closeToaster, closePopUp} from './Actions/VariousActions'
 import Menu from './Components/Menu'
 import Toaster from './Components/Toaster'
 import FloatingButton from './Components/FloatingButton'
 import InfoBox from './Components/InfoBox'
+import InfoPopUp from './Components/InfoPopUp'
 
 class App extends Component {
   constructor(props){
@@ -29,6 +30,9 @@ class App extends Component {
     this.props.dispatch(getPreferences());
   }
 
+  closePopUpHolder(){
+    this.props.dispatch(closePopUp())
+  }
   
   componentDidUpdate(prevProps){
     if(this.props.PopUp !== prevProps.PopUp){
@@ -42,6 +46,11 @@ class App extends Component {
         case "INFO_BOX":{
           this.setState({PopUp:(<PopUpHolder element={<InfoBox />}/>)})
           break;
+        }
+
+        case "INFO_POP_UP":{
+          this.setState({PopUp:(<PopUpHolder element={<InfoPopUp />}/>)})
+          break
         }
 
         case null:{
@@ -121,7 +130,8 @@ App = connect(store=>{
     full_screen_loading:store.full_screen_loading,
     topMenu:store.topMenu,
     theme:store.theme,
-    toaster:store.toaster
+    toaster:store.toaster,
+    infoPopUpState: store.infoPopUpState
   }
 })(App)
 

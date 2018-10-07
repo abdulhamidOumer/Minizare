@@ -5,6 +5,7 @@ import {faMoon,faSun, faPaperPlane} from '@fortawesome/fontawesome-free-solid'
 import {faFacebook,faTwitter,faGithub,faLinkedin,faPiedPiper} from '@fortawesome/fontawesome-free-brands'
 import IconedButton from '../iconedButton'
 import './main.css'
+import {initiateSendMessage} from '../../Actions/messagesHandler'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Menu extends Component{
@@ -13,7 +14,8 @@ class Menu extends Component{
         this.state = {
             light:false,
             dark:false,
-            pied:false
+            pied:false,
+            messageToDev:""
         }
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -100,6 +102,18 @@ class Menu extends Component{
       }
     }
 
+    sendMessageToDev(){
+        const message = this.state.messageToDev
+        this.props.dispatch(initiateSendMessage(message))
+    }
+
+    handleInput(event){
+        const message = event.target.value
+        this.setState({
+            messageToDev:message
+        })
+    }
+
     render(){
         return(
             <div className='top-menu' ref={this.setWrapperRef}>
@@ -114,8 +128,8 @@ class Menu extends Component{
                 <h3 className='title-discriptions'>Contact</h3>
                 
                 <div className='direct-message'>
-                    <textarea placeholder='Direct Message' className='message-input'></textarea>
-                    <button className='send-messenger-button'>
+                    <textarea value={this.state.messageToDev} onChange={this.handleInput.bind(this)} placeholder='Direct Message' className='message-input'></textarea>
+                    <button className='send-messenger-button' onClick={this.sendMessageToDev.bind(this)}>
                         <label>Send To Developer</label>
                         <FontAwesomeIcon icon={faPaperPlane} className='messenger-icon'/>
                     </button>

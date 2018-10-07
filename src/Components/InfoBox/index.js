@@ -1,10 +1,10 @@
 import React,{Component} from 'react'
 import './main.css'
 import InfoTab from './infoTab'
-import {faDownload, faFileAlt, faInfoCircle, faCode} from '@fortawesome/fontawesome-free-solid'
+import {faDownload, faFileAlt, faInfoCircle, faCodeBranch} from '@fortawesome/fontawesome-free-solid'
 import HowTo from './howToInstall'
 import About from './about'
-import Lisence from './softwareLisence'
+import Lisence from './softwareLicense'
 import Contributions from './contributions'
 
 class InfoBox extends Component{
@@ -72,7 +72,7 @@ class InfoBox extends Component{
                     <InfoTab active={this.state.howTo} icon={faDownload} onClick={this.changeActiveComponent.bind(this,'how-to')}/>
                     <InfoTab active={this.state.lisence} icon={faFileAlt} onClick={this.changeActiveComponent.bind(this,'lisence')}/> 
 
-                    <InfoTab active={this.state.contributions} icon={faCode} onClick={this.changeActiveComponent.bind(this,'contributions')}/>
+                    <InfoTab active={this.state.contributions} icon={faCodeBranch} onClick={this.changeActiveComponent.bind(this,'contributions')}/>
 
                     <InfoTab active={this.state.about} icon={faInfoCircle} onClick={this.changeActiveComponent.bind(this, 'about')}/>
                     

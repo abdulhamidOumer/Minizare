@@ -11,11 +11,16 @@ export const sendDataToApi = (path,data,dispatch=null,method='POST')=>{
             }).then(apiResponse=>{
                 //Add Error Handler Module
                 if(apiResponse.status === 200){
-
-                    apiResponse.json().then(jsonResponse=>{
-
-                        resolve(jsonResponse);
-                    })
+                    
+                    try{
+                        apiResponse.json().then(jsonResponse=>{
+                            resolve(jsonResponse);
+                        })
+                    }
+                    catch(e){
+                        resolve(null)
+                    }
+                    
 
                 }
                 else{

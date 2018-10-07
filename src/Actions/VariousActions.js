@@ -32,3 +32,10 @@ export const showPopUp = (name)=>{
         dispatch({type:"SHOW_POP_UP",payload:name})
     }
 }
+
+export const updateInfoPopUp = (type, title,message,icon, onOk, onCancel, buttons)=>{
+    return(dispatch)=>{
+        dispatch({type:"SHOW_POP_UP",payload:"INFO_POP_UP"})
+        dispatch({type:"UPDATE_INFO_POP_UP", payload:{title, message, type, icon, onOk, onCancel, buttons}})
+    }
+}

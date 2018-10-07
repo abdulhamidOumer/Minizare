@@ -12,9 +12,13 @@ class PopUp extends Component{
     }
 
     render(){
+        let closeButton = (<button href="#" aria-label="Close Modal Box" onClick={this.closeModal.bind(this)} className="close">&times;</button>)
+        if(this.props.PopUp === 'INFO_POP_UP')
+            closeButton = null
+
         return(
             <div className="pop-up-container" id="pop-up-container">
-                <button href="#" aria-label="Close Modal Box" onClick={this.closeModal.bind(this)} className="close">&times;</button>
+                {closeButton}
                 <div>
                     {this.props.element}
                 </div>

@@ -2,7 +2,7 @@
   "name": "react-currency-converter",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:9000",
+  "proxy": "http://localhost:9000",
   "homepage": "http://abdulhamidoumer.github.io/Minizare",
   "dependencies": {
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
@@ -17,6 +17,7 @@
     "morgan": "^1.9.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-ga": "^2.5.3",
     "react-number-format": "^3.6.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",

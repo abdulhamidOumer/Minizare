@@ -15,6 +15,8 @@ import Toaster from './Components/Toaster'
 import FloatingButton from './Components/FloatingButton'
 import InfoBox from './Components/InfoBox'
 import InfoPopUp from './Components/InfoPopUp'
+import ReactGa from 'react-ga'
+
 
 class App extends Component {
   constructor(props){
@@ -27,6 +29,8 @@ class App extends Component {
   }
 
   componentWillMount(){
+    ReactGa.initialize('UA-127171800-1')
+    ReactGa.pageview('/')
     this.props.dispatch(getPreferences());
   }
 

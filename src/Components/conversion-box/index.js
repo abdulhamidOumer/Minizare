@@ -140,6 +140,7 @@ class ConversionBox extends Component{
         return(
             <div className='conversion-box'>
 
+
                 <div className='currency-holder'>
                     <NumberFormat prefix={`${this.props.upperCurrency.symbol} `} thousandSeparator={true} name='UPPER_INPUT'  value={this.state.upperCurrencyValue} onChange={this.handleCurrencyInputs.bind(this)} placeholder={this.props.upperCurrency.name} className='currency-input'/>
                     <label className='currency-id'>{this.props.upperCurrency.id}</label>

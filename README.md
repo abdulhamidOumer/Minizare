@@ -16,6 +16,6 @@ Any kind of contributions and bug fixes to the Minizare code base is always welc
     6. Write a good commit messages to every new things you have changed or made.
     7. Push to your origin repository and create a new pull request.
 
-    If you want more guide on contributing for opensource projects read this 
+If you want more guide on contributing for opensource projects read this ![Tutorial](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 
 

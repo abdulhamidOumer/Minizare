@@ -31,7 +31,7 @@ export const getExchangeRate = (from, to)=>{
 
 
 const getExchangeFromApi = (exchange_id, from, to)=>{
-    const path = `https://free.currencyconverterapi.com/api/v6/convert?q=${exchange_id}`;
+    const path = `https://free.currencyconverterapi.com/api/v6/convert?q=${exchange_id}&apiKey=baad9301ee94175f54d7`;
 
     return new Promise((resolve, reject)=>{
         getDataFromApi(path).then(res=>{
@@ -133,7 +133,7 @@ export const getHistoryData = (firstCurrrency, secondCurrency, fromDate, toDate)
 }   
 
 const getHistoryFromApi = (firstCurrrency, secondCurrency, fromDate, toDate)=>{
-    const path = `https://free.currencyconverterapi.com/api/v6/convert?q=${firstCurrrency}_${secondCurrency},${secondCurrency}_${firstCurrrency}&compact=ultra&date=${fromDate}&endDate=${toDate}`
+    const path = `https://free.currencyconverterapi.com/api/v6/convert?q=${firstCurrrency}_${secondCurrency},${secondCurrency}_${firstCurrrency}&compact=ultra&date=${fromDate}&endDate=${toDate}&apiKey=baad9301ee94175f54d7`
 
     return new Promise((resolve, reject)=>{
 

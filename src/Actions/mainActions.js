@@ -9,7 +9,7 @@ import {changeActiveTheme} from '../Actions/topBarActions'
 import {faExclamationTriangle, faTimes} from '@fortawesome/fontawesome-free-solid'
 const populateCountriesOnline = ()=>{
     return(dispatch)=>{
-        const path = 'https://free.currencyconverterapi.com/api/v5/countries'
+        const path = 'https://free.currencyconverterapi.com/api/v5/countries?apiKey=baad9301ee94175f54d7'
         getDataFromApi(path).then(res=>{
             if(res.hasOwnProperty('results')){
                 dispatch({type:"POPULATE_COUNTRIES",payload:res.results});
